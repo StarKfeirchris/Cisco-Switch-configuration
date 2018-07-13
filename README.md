@@ -396,15 +396,15 @@ or
   - StackWise 線接好後，把新 Switch 的電源線接上。
   - 確認新 Switch 通電後，把 StackPower 接上。
   - 等新 Switch 開好機，進原有 Stack 的 console：
-
-        ```go
-            # show switch detail         //確認新 Switch 有加進來，順便看 Switch number。
-            # configure terminal
-            # switch [sw-number] priority [number]    //[sw-number] = Switch number。
+  
+       ```go
+           # show switch detail         //確認新 Switch 有加進來，順便看 Switch number。
+           # configure terminal
+           # switch [sw-number] priority [number]    //[sw-number] = Switch number。
                                                      //priority number = 最後一台 Switch 的 priority 減 1，例如最後一台 Switch priority 是 13，則新 Switch 為 12。
-            # exit      //退出特權模式。
-            # copy running-config startup-config      //這裡不能用 Write。
-        ```
+           # exit      //退出特權模式。
+           # copy running-config startup-config      //這裡不能用 Write。
+       ```
   
 - 完成。
 
@@ -509,17 +509,17 @@ or
 
  - **Port Aggregation Protocol (PAgP)**
 
-        ```go
-            # interface range Gi[port number]-[port number]          //e.g. int range Gi0/1-2
-            # channel-group [group number] mode [desirable/auto]     //一般都用 desirable
-        ```
+     ```go
+         # interface range Gi[port number]-[port number]          //e.g. int range Gi0/1-2
+         # channel-group [group number] mode [desirable/auto]     //一般都用 desirable
+     ```
 
  - **Link Aggregation Control Protocol (LACP)**
 
-        ```go
-            # interface range Gi[port number]-[port number]          //e.g. int range Gi0/1-2
-            # channel-group [group number] mode [active/passive]     //一般都用 active
-        ```
+     ```go
+         # interface range Gi[port number]-[port number]          //e.g. int range Gi0/1-2
+         # channel-group [group number] mode [active/passive]     //一般都用 active
+     ```
 
 **查看 port-channel 狀態**
 
@@ -541,88 +541,45 @@ or
 
   - 定義一個清單（第一次設定完後，之後再輸入這個指令就是編輯清單）
     
-        ```go
-            # mac access-list extended [清單名稱]    //名稱開頭不能是數字。
-        ```
+       ```go
+           # mac access-list extended [清單名稱]    //名稱開頭不能是數字。
+       ```
     
   - 指定的特定 mac address 可以被訪問（in）
 
-        ```go
-            # permit any host [mac address]          //mac 格式 0000.0000.0000
-        ```
+       ```go
+           # permit any host [mac address]          //mac 格式 0000.0000.0000
+       ```
 
   - 指定的特定 mac address 可以連外（out）
 
-        ```go
-            # permit host [mac address] any          //mac 格式 0000.0000.0000
-        ```
+       ```go
+           # permit host [mac address] any          //mac 格式 0000.0000.0000
+       ```
 
   - 編輯完清單後記得退出
 
-        ```go
-            # exit
-        ```
+       ```go
+           # exit
+       ```
 
   - 進入要綁 mac address 清單的 port
 
-        ```go
-            # interface Gi[port number]              //e.g. interface Gi0/1
-        ```
+       ```go
+           # interface Gi[port number]              //e.g. interface Gi0/1
+       ```
 
   - 綁定清單至 port
 
-        ```go
-            # mac access-group [清單名稱] in
-        ```
+       ```go
+           # mac access-group [清單名稱] in
+       ```
 
 * 取消綁定
 
-    ```go
-        # interface Gi[port number]                  //e.g. interface Gi0/1
-        # no mac access-group [清單名稱] in          //名稱大小寫要跟當初設定的一樣
-        # exit //退出 interface
-        # no mac access-list extended [清單名稱]     //名稱大小寫要跟當初設定的一樣
-    ```
-  
-  
-#### 手動加入 route table（淡水 cisco 適用）
-
-* 先變更安全管理範本（SDM = Security Device manager；安全裝置管理員）
-
-    ```go
-        # sdm prefer lanbase-routing
-        # exit              //退出全域設定模式。
-        # write memory      //存檔。
-        # reload            //需重啟才會生效。
-    ```
-  
-* 開啟路由功能
-
-    ```go
-        # ip routing            //只需啟動一次之後就都有此功能。
-    ```
-    
-    `C3750X 開啟之後需要手動加 ip route，原 ip default-gateway 會失效。`
-  
-  
-**查看 SDM 資訊**
-
-```go
-    # show sdm prefer
-```
-
-**查看路由表**
-
-```go
-    # show ip route
-```
-
-**查看 SDM 模板設定值**
-
-```go
-    # show sdm prefer [模板名稱]
-```
-
-`選項有 access、default、dual-ipv4-and-ipv6、routing、vlan`  
-`如果不確定支援哪些模板可以在 [模板名稱] 的地方輸入 "?" 查詢。`
-
+   ```go
+       # interface Gi[port number]                  //e.g. interface Gi0/1
+       # no mac access-group [清單名稱] in          //名稱大小寫要跟當初設定的一樣
+       # exit //退出 interface
+       # no mac access-list extended [清單名稱]     //名稱大小寫要跟當初設定的一樣
+   ```
