@@ -381,8 +381,11 @@ or
 
 - 假設是 Switch-3 壞掉，需要更換一台新的 Switch 上架時：
   - 假設 Switch-3 硬體已經移除，首先在其他上線的機器內操作：
-    # configure terminal
-    # no switch 3 provision
+  
+       ```go
+           # configure terminal
+           # no switch 3 provision
+       ```
   
   - 先把新 Switch 重置、清空設定。
   - 將新 Switch 關機，並且上架，把 StackWise 線接好。
