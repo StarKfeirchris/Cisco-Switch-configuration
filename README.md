@@ -17,7 +17,7 @@ v20180713 (Sensitive information has been modified or deleted.)
     2. [基礎設定](#-%E5%9F%BA%E7%A4%8E%E8%A8%AD%E5%AE%9A)
     3. 設定 LACP (可上架前做也可以先做好)   
         * [Port-channel command](#port-channel-command) => Link Aggregation Control Protocol (LACP) 
-    4. [加入路由表](#%E6%89%8B%E5%8B%95%E5%8A%A0%E5%85%A5-route-table%E6%B7%A1%E6%B0%B4-cisco-%E9%81%A9%E7%94%A8) => Only L2 Switch in Tamsui with open ip routing
+    4. [加入路由表](#%E6%89%8B%E5%8B%95%E5%8A%A0%E5%85%A5-route-table%E6%B7%A1%E6%B0%B4-cisco-%E9%81%A9%E7%94%A8) => Only L2 Switch in IDC with open ip routing
 
 ##### 如果是要設定一台全新的 `L3 Switch`，請照著下列所列出的章節做：
 * Office
@@ -36,7 +36,7 @@ v20180713 (Sensitive information has been modified or deleted.)
         2. 指定 Master (依照 Siwtch 順序排列)
     4. 設定 LACP (可上架前做也可以先做好)   
         * [Port-channel command](#port-channel-command) => Link Aggregation Control Protocol (LACP) 
-    5. [加入路由表](#%E6%89%8B%E5%8B%95%E5%8A%A0%E5%85%A5-route-table%E6%B7%A1%E6%B0%B4-cisco-%E9%81%A9%E7%94%A8) => Only C3750X in Tamsui with open ip routing
+    5. [加入路由表](#%E6%89%8B%E5%8B%95%E5%8A%A0%E5%85%A5-route-table%E6%B7%A1%E6%B0%B4-cisco-%E9%81%A9%E7%94%A8) => Only C3750X in IDC with open ip routing
 
 * IDC => 如果是要把一台全新的 `L3 Switch`，`加入現有的 Stack`。
     1. 參考 [C3750X 障礙更換](#-c3750x-%E9%9A%9C%E7%A4%99%E6%9B%B4%E6%8F%9B) 章節，並依現場情況做處理。
