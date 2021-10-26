@@ -2,7 +2,7 @@
 
 Cisco Switch 設定指南
 ------------------------------
-v20180713 (Sensitive information has been modified or deleted.)
+v20211026 (Sensitive information has been modified or deleted.)
   
 ### 快速導覽  
 
